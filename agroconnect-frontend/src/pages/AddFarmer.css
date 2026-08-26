@@ -1,0 +1,126 @@
+.add-farmer {
+    min-height: 100vh;
+    padding: 50px 20px;
+    position: relative;
+
+    background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Background overlay */
+.form-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+/* Content */
+.farmer-wrapper {
+    position: relative;
+    z-index: 1;
+
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Form card */
+.adding-form {
+    background: rgba(255, 255, 255, 0.94);
+    padding: 35px 40px;
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.adding-form h1 {
+    text-align: center;
+    margin: 0;
+}
+
+.form-subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Two-column layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: green;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* Submit button */
+.submit-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 13px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: green;
+    color: white;
+
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    opacity: 0.85;
+}
+
+/* Result */
+.result-container {
+    margin-top: 25px;
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border-radius: 15px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: span 1;
+    }
+
+    .adding-form {
+        padding: 25px 20px;
+    }
+}
