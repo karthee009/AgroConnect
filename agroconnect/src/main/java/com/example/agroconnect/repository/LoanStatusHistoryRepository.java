@@ -1,0 +1,1 @@
+package com.example.agroconnect.repository; import com.example.agroconnect.model.LoanStatusHistory; import org.springframework.data.jpa.repository.JpaRepository; import java.util.List; public interface LoanStatusHistoryRepository extends JpaRepository<LoanStatusHistory,Long>{List<LoanStatusHistory> findByLoanLoanIdOrderByChangedAtDesc(Long loanId);}

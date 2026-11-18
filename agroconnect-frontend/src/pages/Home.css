@@ -1,162 +1,326 @@
-/* =========================
-   AgroConnect Home Page
-   ========================= */
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap");
 
-.home-container {
-  min-height: 100vh;
-  padding-top: 30px;
+.home {
+    --field: #1f4d2e;
+    --leaf: #3f9142;
+    --wheat: #e9b949;
+    --soil: #6b4a2f;
+    --ink: #1d2a21;
+    --muted: #5f6e64;
+    --paper: #f6f8f2;
+    --line: #dfe6d8;
+
+    min-height: calc(100vh - 70px);
+    padding: 28px 20px 48px;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Figtree", system-ui, sans-serif;
 }
 
-/* Hero Section */
-.hero-section {
-  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
-  border-radius: 25px;
-  padding: 70px 30px !important;
-  box-shadow: 0 10px 30px rgba(46, 125, 50, 0.12);
-  border: 1px solid #dcedc8;
+.home > * {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hero-title {
-  font-size: 55px;
-  letter-spacing: 1px;
+/* ================= HERO ================= */
+
+.home-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #cfe9f3 0%, #fdf0c8 100%);
 }
 
 .hero-text {
-  color: #555;
-  font-size: 20px;
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    padding: 36px;
 }
 
-/* Buttons */
-.hero-section .btn {
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: all 0.3s ease;
+.hero-greet {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--field);
+    overflow-wrap: anywhere;
+    animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.hero-section .btn-success:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(46, 125, 50, 0.25);
+.hero-text h1 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.1s both;
 }
 
-.hero-section .btn-outline-success:hover {
-  transform: translateY(-3px);
-}
-
-/* Service Cards */
-.service-card {
-  border: none;
-  border-radius: 18px;
-  padding: 25px !important;
-  height: 100%;
-  background: white;
-  transition: all 0.3s ease;
-  border-top: 4px solid #43a047;
-}
-
-.service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12) !important;
-}
-
-.service-icon {
-  font-size: 45px;
-  margin-bottom: 10px;
-}
-
-.service-card h5 {
-  color: #2e7d32;
-  font-weight: 700;
-}
-
-.service-card p {
-  color: #666;
-}
-
-/* Why AgroConnect */
-.why-section {
-  background: #fafafa;
-  padding: 35px;
-  border-radius: 20px;
-}
-
-.why-title {
-  font-weight: 700;
-}
-
-.why-list {
-  border-radius: 15px;
-  overflow: hidden;
-}
-
-.why-list .list-group-item {
-  padding: 15px 20px;
-  border-left: 4px solid #66bb6a;
-  transition: 0.3s;
-}
-
-.why-list .list-group-item:hover {
-  background: #e8f5e9;
-  padding-left: 28px;
-}
-
-/* Statistics */
-.stats-section {
-  margin-top: 50px;
-  background: linear-gradient(135deg, #2e7d32, #43a047);
-  border-radius: 20px;
-  padding: 35px 20px;
-  color: white;
-}
-
-.stat-box {
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.stat-box:last-child {
-  border-right: none;
-}
-
-.stat-number {
-  color: white !important;
-  font-size: 38px;
-  font-weight: 700;
-}
-
-.stat-label {
-  color: #e8f5e9;
-  font-size: 17px;
-}
-
-/* Footer */
-.home-footer {
-  color: #777;
-  border-top: 1px solid #ddd;
-  padding-top: 20px;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-
-  .hero-title {
-    font-size: 40px;
-  }
-
-  .hero-text {
+.hero-sub {
+    margin: 14px 0 0;
     font-size: 17px;
-  }
+    color: #33473a;
+    animation: rise 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s both;
+}
 
-  .hero-section .btn {
-    margin-bottom: 10px;
-  }
+@keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: none; }
+}
 
-  .stat-box {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 15px;
-  }
+/* ----- ground, tractor and seedlings ----- */
 
-  .stat-box:last-child {
-    border-bottom: none;
-  }
+.hero-ground {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 64px;
+    background:
+        repeating-linear-gradient(90deg, transparent 0 22px, rgba(0, 0, 0, 0.1) 22px 24px),
+        var(--soil);
+    border-top: 6px solid var(--field);
+    z-index: 1;
+}
+
+.seedling {
+    position: absolute;
+    bottom: 100%;
+    width: 7px;
+    margin-bottom: -2px;
+    border-radius: 6px 6px 2px 2px;
+    background: var(--leaf);
+    transform-origin: bottom center;
+    transform: scaleY(0);
+    animation:
+        sprout 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) forwards,
+        sway 3s ease-in-out infinite;
+}
+
+@keyframes sprout {
+    to { transform: scaleY(1); }
+}
+@keyframes sway {
+    0%, 100% { rotate: -3deg; }
+    50%      { rotate: 3deg; }
+}
+
+.tractor {
+    position: absolute;
+    bottom: 100%;
+    left: -70px;
+    font-size: 46px;
+    line-height: 1;
+    transform: scaleX(-1);
+    margin-bottom: -6px;
+    animation: drive 3.8s linear 0.3s forwards;
+}
+
+@keyframes drive {
+    to { left: calc(100% + 20px); }
+}
+
+/* ================= CARDS ================= */
+
+.home-card {
+    margin-top: 22px;
+    padding: 28px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+}
+
+.profile-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e6f3e2;
+    font-size: 24px;
+}
+
+.profile-head h2 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 22px;
+}
+.profile-head p {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.detail {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: #fafcf7;
+    min-width: 0;
+}
+.detail-icon { font-size: 24px; }
+.detail small { color: var(--muted); font-size: 12px; }
+.detail p {
+    margin: 2px 0 0;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.role-chip {
+    display: inline-block;
+    padding: 2px 12px;
+    border-radius: 999px;
+    background: #fbf0d3;
+    color: #7a5600;
+    font-size: 13px;
+}
+
+/* ================= QUICK ACCESS ================= */
+
+.quick { margin-top: 34px; }
+
+.quick h2 {
+    margin: 0;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 26px;
+}
+.quick-sub {
+    margin: 4px 0 18px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.quick-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.action {
+    position: relative;
+    overflow: hidden;
+    padding: 28px 24px;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-bottom: 4px solid var(--leaf);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* a strip of green rises from the bottom on hover */
+.action::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, #e6f3e2, transparent 70%);
+    transform: translateY(100%);
+    transition: transform 0.35s ease;
+}
+.action:hover { transform: translateY(-5px); box-shadow: 0 14px 28px rgba(31, 77, 46, 0.14); }
+.action:hover::before { transform: none; }
+.action:active { transform: translateY(-2px) scale(0.99); }
+
+.action > * { position: relative; }
+
+.action-icon {
+    display: inline-block;
+    font-size: 40px;
+    transition: transform 0.4s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+.action:hover .action-icon { transform: scale(1.2) rotate(-8deg); }
+
+.action h3 {
+    margin: 12px 0 4px;
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 20px;
+}
+.action p { margin: 0; font-size: 14px; color: var(--muted); }
+
+.action:focus-visible,
+.logout:focus-visible {
+    outline: 3px solid var(--wheat);
+    outline-offset: 3px;
+}
+
+/* ================= LOGOUT ================= */
+
+.logout {
+    display: block;
+    margin-top: 36px;
+    padding: 12px 34px;
+    border: 0;
+    border-radius: 999px;
+    background: #c2543a;
+    color: #fff;
+    font: 600 15px "Figtree", sans-serif;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+.logout:hover { background: #a3432d; }
+.logout:active { transform: scale(0.96); }
+
+/* ================= LOADING ================= */
+
+.home-loading {
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--field);
+    font-family: "Figtree", sans-serif;
+}
+.sprout {
+    font-size: 48px;
+    transform-origin: bottom center;
+    animation: pulse-grow 1.2s ease-in-out infinite;
+}
+@keyframes pulse-grow {
+    0%, 100% { transform: scale(0.8); }
+    50%      { transform: scale(1.15); }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 640px) {
+    .home { padding: 16px 12px 36px; }
+    .hero-text { padding: 26px 22px; }
+    .home-hero { min-height: 280px; }
+    .home-card { padding: 20px; }
+}
+
+/* ================= REDUCED MOTION ================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .home *, .home *::before, .home *::after,
+    .sprout {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .seedling { transform: scaleY(1); }
+    .tractor { left: calc(100% + 20px); }
 }

@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { logoutUser } from "../services/AuthService";
 
 function Navbar() {
 
@@ -17,8 +18,9 @@ function Navbar() {
 
     }, []);
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
 
+        try { await logoutUser(); } catch (error) { console.warn("Session logout request failed", error); }
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         localStorage.removeItem("isLoggedIn");
@@ -62,6 +64,10 @@ function Navbar() {
                             </NavLink>
                         </li>
 
+
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="/farm-tools">Farm Tools</NavLink>
+                        </li>
 
                         <li className="nav-item">
                             <NavLink

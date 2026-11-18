@@ -96,7 +96,12 @@ public class AuthController {
         return ResponseEntity.ok("Logout Successful");
     }
     @PostMapping("/create-admin")
-    public ResponseEntity<?> createAdmin(@RequestBody User user) {
+    public ResponseEntity<?> createAdmin(@RequestBody User user, HttpSession session) {
+
+        boolean adminExists = userRepository.findAll().stream().anyMatch(u -> "ADMIN".equals(u.getRole()));
+        if (adminExists && !"ADMIN".equals(session.getAttribute("role"))) {
+            return ResponseEntity.status(403).body("Only an authenticated admin can create another admin");
+        }
 
         try {
             User savedAdmin = userService.createAdmin(user);

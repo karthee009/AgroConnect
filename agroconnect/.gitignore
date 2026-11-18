@@ -31,3 +31,11 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Private uploaded loan documents
+uploads/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example

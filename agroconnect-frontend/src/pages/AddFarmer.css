@@ -1,126 +1,1323 @@
-.add-farmer {
-    min-height: 100vh;
-    padding: 50px 20px;
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Bricolage+Grotesque:wght@500;600;700;800&display=swap");
+
+/* =================================
+   AGROCONNECT FARMER APPLICATION
+================================= */
+
+.af,
+.af *,
+.af *::before,
+.af *::after {
+    box-sizing: border-box;
+}
+
+.af {
+    --af-green: #21845b;
+    --af-green-dark: #176844;
+    --af-green-light: #eaf6ee;
+    --af-text: #193027;
+    --af-muted: #74847b;
+    --af-border: #dce7df;
+    --af-bg: #f4f8f5;
+    --af-white: #ffffff;
+    --af-danger: #b83232;
+    --af-amber: #8a5a00;
+    --af-amber-bg: #fff6e0;
+    --af-amber-border: #f0dba5;
+
+    display: block;
     position: relative;
-
-    background-image: url("https://images.unsplash.com/photo-1500382017468-9049fed747ef");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-/* Background overlay */
-.form-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-}
-
-/* Content */
-.farmer-wrapper {
-    position: relative;
-    z-index: 1;
-
-    max-width: 1000px;
-    margin: auto;
-}
-
-/* Form card */
-.adding-form {
-    background: rgba(255, 255, 255, 0.94);
-    padding: 35px 40px;
-    border-radius: 15px;
-
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-}
-
-.adding-form h1 {
-    text-align: center;
-    margin: 0;
-}
-
-.form-subtitle {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Two-column layout */
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 18px 25px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 7px;
-}
-
-.form-group input {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 7px;
-    font-size: 15px;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: green;
-}
-
-.full-width {
-    grid-column: span 2;
-}
-
-/* Submit button */
-.submit-btn {
     width: 100%;
-    margin-top: 25px;
-    padding: 13px;
+    max-width: 100%;
+    min-width: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 24px 48px;
 
-    border: none;
-    border-radius: 8px;
+    color: var(--af-text);
+    background:
+        radial-gradient(
+            ellipse at top left,
+            rgba(33, 132, 91, 0.09),
+            transparent 42%
+        ),
+        var(--af-bg);
 
-    background: green;
-    color: white;
+    font-family: "Figtree", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
 
-    font-size: 17px;
-    font-weight: bold;
+    overflow-wrap: break-word;
+    overflow-x: clip;
+}
+
+.af h1,
+.af h2,
+.af h3,
+.af p {
+    max-width: 100%;
+}
+
+.af button,
+.af input,
+.af select,
+.af textarea {
+    font: inherit;
+}
+
+.af button {
     cursor: pointer;
 }
 
-.submit-btn:hover {
-    opacity: 0.85;
+.af input,
+.af select,
+.af textarea {
+    min-width: 0;
+    max-width: 100%;
 }
 
-/* Result */
-.result-container {
-    margin-top: 25px;
-    padding: 25px;
+/* =================================
+   MAIN FORM
+================================= */
 
-    background: rgba(255, 255, 255, 0.94);
-    border-radius: 15px;
+.af .af-card {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 940px;
+    min-width: 0;
+    margin: 0 auto;
+    padding: 32px;
 
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: var(--af-white);
+    border: 1px solid var(--af-border);
+    border-radius: 22px;
+
+    box-shadow: 0 14px 42px rgba(30, 65, 44, 0.07);
 }
 
-/* Mobile responsive */
-@media (max-width: 600px) {
+/* =================================
+   HEADER
+================================= */
 
-    .form-grid {
-        grid-template-columns: 1fr;
+.af .af-head {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 22px;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 28px;
+    padding: 0 0 24px;
+
+    border-bottom: 1px solid var(--af-border);
+}
+
+.af .af-heading {
+    display: block;
+    width: 100%;
+    min-width: 0;
+}
+
+.af .af-eyebrow {
+    display: block;
+    margin: 0 0 8px;
+
+    color: var(--af-green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    line-height: 1.5;
+}
+
+.af .af-head h1 {
+    display: block;
+    width: 100%;
+    margin: 0;
+
+    color: var(--af-text);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: clamp(26px, 3vw, 35px);
+    font-weight: 800;
+    line-height: 1.2;
+
+    overflow-wrap: anywhere;
+}
+
+.af .af-head p {
+    display: block;
+    width: 100%;
+    margin: 12px 0 0;
+
+    color: var(--af-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* Step card + progress card sit side by side with equal height */
+.af .af-meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    align-items: stretch;
+    gap: 16px;
+
+    width: 100%;
+    min-width: 0;
+}
+
+/* =================================
+   STEP INDICATOR
+================================= */
+
+.af .af-step-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-width: 0;
+    padding: 16px;
+
+    background: #f7faf7;
+    border: 1px solid var(--af-border);
+    border-radius: 13px;
+}
+
+.af .af-step-number {
+    display: flex;
+    flex: 0 0 38px;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+
+    color: #fff;
+    background: var(--af-green);
+    border-radius: 50%;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.af .af-step-label > div {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 2px;
+}
+
+.af .af-step-label strong {
+    color: var(--af-text);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.af .af-step-label small {
+    color: var(--af-muted);
+    font-size: 12px;
+}
+
+/* =================================
+   PROGRESS BAR
+================================= */
+
+.af .af-progress {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    min-width: 0;
+    margin: 0;
+    padding: 16px;
+
+    background: #f7faf7;
+    border: 1px solid var(--af-border);
+    border-radius: 13px;
+}
+
+.af .af-progress-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    width: 100%;
+    margin-bottom: 10px;
+
+    color: var(--af-muted);
+    font-size: 13px;
+}
+
+.af .af-progress-top strong {
+    color: var(--af-green);
+    font-size: 15px;
+}
+
+.af .grow-track {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 8px;
+    margin: 0 0 10px;
+
+    background: #e3ece5;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.af .grow-fill {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+
+    background: linear-gradient(90deg, #21845b, #62b883);
+    border-radius: inherit;
+
+    transition: width 0.25s ease;
+}
+
+.af .af-progress small {
+    display: block;
+    color: var(--af-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* =================================
+   SECTIONS (fieldset + section)
+================================= */
+
+.af fieldset.af-section,
+.af section.af-section {
+    display: block;
+    float: none;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    min-inline-size: 0;
+
+    margin: 0 0 24px;
+    padding: 22px;
+
+    background: var(--af-white);
+    border: 1px solid var(--af-border);
+    border-radius: 16px;
+}
+
+.af fieldset.af-section > legend {
+    display: block;
+    float: none;
+
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 8px;
+
+    color: var(--af-text);
+    background: var(--af-white);
+
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    line-height: 1.5;
+}
+
+.af .af-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 18px;
+}
+
+.af .af-section-heading > div {
+    min-width: 0;
+}
+
+.af .af-section-heading .af-eyebrow {
+    margin-bottom: 5px;
+}
+
+.af .af-section h2,
+.af .af-legend {
+    display: block;
+    width: 100%;
+    margin: 0;
+
+    color: var(--af-text);
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.af .af-legend {
+    margin-bottom: 20px;
+}
+
+/* =================================
+   GRID LAYOUT (2 columns, equal widths)
+================================= */
+
+.af .af-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 20px;
+
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+
+.af .af-grid > * {
+    min-width: 0;
+    max-width: 100%;
+}
+
+/* =================================
+   INPUT FIELDS
+================================= */
+
+.af .field {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 0;
+}
+
+.af .field label,
+.af .field .af-label {
+    display: block;
+    width: 100%;
+    margin: 0;
+
+    color: #344c3f;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.af .field input,
+.af .field select,
+.af .field textarea {
+    display: block;
+
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    margin: 0;
+    padding: 12px 14px;
+
+    color: var(--af-text);
+    background: #fbfdfb;
+
+    border: 1px solid #d8e3da;
+    border-radius: 10px;
+    outline: none;
+
+    font-family: "Figtree", sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+
+    box-shadow: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+/* Dropdown arrow */
+.af .field select {
+    padding-right: 40px;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%2374847b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 12px 8px;
+
+    text-overflow: ellipsis;
+}
+
+.af .field input::placeholder,
+.af .field textarea::placeholder {
+    color: #9aa9a0;
+    opacity: 1;
+}
+
+.af .field input:focus,
+.af .field select:focus,
+.af .field textarea:focus {
+    background-color: #fff;
+    border-color: var(--af-green);
+    box-shadow: 0 0 0 3px rgba(33, 132, 91, 0.12);
+}
+
+.af .field input:disabled,
+.af .field select:disabled,
+.af .field textarea:disabled {
+    background-color: #f0f3f1;
+    cursor: not-allowed;
+    opacity: 0.75;
+}
+
+/* Read-only tile that lines up with inputs (loan terms) */
+.af .af-readonly {
+    display: flex;
+    align-items: center;
+
+    min-height: 48px;
+    padding: 12px 14px;
+
+    color: var(--af-green-dark);
+    background: var(--af-green-light);
+    border: 1px solid #cfe7d7;
+    border-radius: 10px;
+
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+/* =================================
+   FARM INSIGHTS
+================================= */
+
+.af .af-insights {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+
+    width: 100%;
+    min-width: 0;
+    margin-top: 20px;
+}
+
+.af .af-insight {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    min-width: 0;
+    padding: 12px 14px;
+
+    background: #f8fbf8;
+    border: 1px solid #e5eee7;
+    border-radius: 10px;
+}
+
+.af .af-insight > span {
+    color: var(--af-muted);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.af .af-insight > strong {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 8px;
+
+    color: var(--af-text);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.af .af-badge {
+    display: inline-block;
+    padding: 2px 9px;
+
+    color: var(--af-green-dark);
+    background: var(--af-green-light);
+    border: 1px solid #cfe7d7;
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.af .af-badge-off {
+    color: var(--af-muted);
+    background: #f0f3f1;
+    border-color: #e1e8e3;
+}
+
+/* =================================
+   LOAN SUGGESTION / WARNING
+================================= */
+
+.af .af-suggest {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 16px;
+
+    width: 100%;
+    min-width: 0;
+    margin-top: 20px;
+    padding: 14px 16px;
+
+    background: var(--af-green-light);
+    border: 1px solid #cfe7d7;
+    border-radius: 12px;
+}
+
+.af .af-suggest p {
+    flex: 1 1 260px;
+    min-width: 0;
+    margin: 0;
+
+    color: var(--af-text);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.af .af-suggest strong {
+    color: var(--af-green-dark);
+}
+
+.af .af-warning {
+    width: 100%;
+    margin: 14px 0 0;
+    padding: 12px 14px;
+
+    color: var(--af-amber);
+    background: var(--af-amber-bg);
+    border: 1px solid var(--af-amber-border);
+    border-radius: 10px;
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =================================
+   LOAN ESTIMATE
+================================= */
+
+.af .af-estimate-icon {
+    display: flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--af-green);
+    background: var(--af-green-light);
+    border-radius: 12px;
+
+    font-size: 23px;
+    font-weight: 800;
+}
+
+.af .af-estimate-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+
+    width: 100%;
+    min-width: 0;
+}
+
+.af .af-stat {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+
+    min-width: 0;
+    padding: 16px;
+
+    background: #f7faf7;
+    border: 1px solid #e4eee6;
+    border-radius: 12px;
+}
+
+.af .af-stat span {
+    color: var(--af-muted);
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.af .af-stat strong {
+    color: var(--af-green-dark);
+    font-size: clamp(14px, 1.6vw, 18px);
+    font-weight: 800;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.af .af-muted {
+    margin: 16px 0 0;
+    color: var(--af-muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.af .af-note {
+    display: block;
+    margin-top: 18px;
+    padding-top: 14px;
+
+    color: var(--af-muted);
+    border-top: 1px solid var(--af-border);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =================================
+   REVIEW STEP
+================================= */
+
+.af .af-review-field {
+    padding: 14px;
+
+    background: #f8fbf8;
+    border: 1px solid #e5eee7;
+    border-radius: 10px;
+    gap: 0;
+}
+
+.af .af-review-field > span {
+    display: block;
+    color: var(--af-muted);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.af .af-review-field > strong {
+    display: block;
+    max-width: 100%;
+    margin-top: 5px;
+
+    color: var(--af-text);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.6;
+
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* =================================
+   ACTION BUTTONS
+================================= */
+
+.af .af-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    width: 100%;
+    min-width: 0;
+    margin-top: 26px;
+}
+
+.af .af-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 0;
+    max-width: 100%;
+    min-height: 48px;
+    margin: 0;
+    padding: 13px 22px;
+
+    border: 1px solid transparent;
+    border-radius: 11px;
+
+    font-family: "Figtree", sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: center;
+
+    overflow-wrap: anywhere;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.af .af-button-small {
+    min-height: 40px;
+    padding: 8px 16px;
+    font-size: 13px;
+}
+
+.af .af-button-primary {
+    color: #fff;
+    background: var(--af-green);
+}
+
+.af .af-button-primary:hover:not(:disabled) {
+    background: var(--af-green-dark);
+    box-shadow: 0 6px 16px rgba(33, 132, 91, 0.18);
+    transform: translateY(-1px);
+}
+
+.af .af-button-secondary {
+    color: var(--af-text);
+    background: #fff;
+    border-color: var(--af-border);
+}
+
+.af .af-button-secondary:hover:not(:disabled) {
+    background: var(--af-green-light);
+    border-color: #b8d9c3;
+}
+
+.af .af-button:focus-visible {
+    outline: 3px solid rgba(33, 132, 91, 0.35);
+    outline-offset: 2px;
+}
+
+.af .af-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+}
+
+/* =================================
+   ERROR / LOADING
+================================= */
+
+.af .af-error {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    margin-top: 20px;
+    padding: 14px 16px;
+
+    color: var(--af-danger);
+    background: #fff1f0;
+    border: 1px solid #f0c8c5;
+    border-radius: 10px;
+
+    font-size: 13px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+}
+
+.af .af-saving {
+    margin: 16px 0 0;
+    color: var(--af-muted);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 760px) {
+    .af {
+        padding: 24px 16px 36px;
     }
 
-    .full-width {
-        grid-column: span 1;
+    .af .af-card {
+        padding: 24px;
     }
 
-    .adding-form {
-        padding: 25px 20px;
+    .af .af-meta {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .af fieldset.af-section,
+    .af section.af-section {
+        padding: 18px;
+    }
+
+    .af .af-grid {
+        gap: 16px;
+    }
+
+    .af .af-insights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .af .af-estimate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 560px) {
+    .af {
+        padding: 14px 10px 28px;
+    }
+
+    .af .af-card {
+        padding: 18px 13px;
+        border-radius: 15px;
+    }
+
+    .af .af-head {
+        gap: 18px;
+        margin-bottom: 22px;
+        padding-bottom: 20px;
+    }
+
+    .af .af-head h1 {
+        font-size: 26px;
+    }
+
+    .af fieldset.af-section,
+    .af section.af-section {
+        margin-bottom: 18px;
+        padding: 16px 12px;
+        border-radius: 12px;
+    }
+
+    .af fieldset.af-section > legend {
+        font-size: 17px;
+    }
+
+    .af .af-grid,
+    .af .af-insights,
+    .af .af-estimate-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 14px;
+    }
+
+    .af .af-stat {
+        padding: 14px;
+    }
+
+    .af .af-stat strong {
+        font-size: 18px;
+    }
+
+    .af .af-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .af .af-button {
+        width: 100%;
+    }
+
+    .af .af-suggest .af-button {
+        width: 100%;
+    }
+}
+
+/* =================================
+   VERY SMALL MOBILE
+================================= */
+
+@media (max-width: 360px) {
+    .af {
+        padding: 10px 6px 22px;
+    }
+
+    .af .af-card {
+        padding: 14px 9px;
+    }
+
+    .af fieldset.af-section,
+    .af section.af-section {
+        padding: 14px 9px;
+    }
+
+    .af .af-head h1 {
+        font-size: 23px;
+    }
+
+    .af .af-progress,
+    .af .af-step-label {
+        padding: 12px;
+    }
+
+    .af .af-review-field {
+        padding: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .af *,
+    .af *::before,
+    .af *::after {
+        transition: none !important;
+    }
+}
+
+/* =================================
+   DEFENSIVE RESET
+   Stops other global stylesheets (animations, transforms,
+   absolute positioning on generic class names) from
+   moving form elements out of their section.
+================================= */
+
+.af fieldset.af-section,
+.af .af-grid,
+.af .af-grid > *,
+.af .field,
+.af .field > *,
+.af .af-readonly,
+.af .af-suggest,
+.af .af-insights,
+.af .af-insight {
+    position: static !important;
+    transform: none !important;
+    rotate: none !important;
+    translate: none !important;
+    scale: none !important;
+    animation: none !important;
+    float: none !important;
+}
+
+.af fieldset.af-section {
+    overflow: visible;
+    height: auto !important;
+}
+
+/* =================================
+   COMPACT MODE
+   Smaller spacing, type and inputs so the whole form
+   needs far less scrolling.
+================================= */
+
+.af {
+    padding: 20px 16px 32px;
+    font-size: 14px;
+}
+
+.af .af-card {
+    max-width: 880px;
+    padding: 22px;
+    border-radius: 16px;
+}
+
+/* Header */
+.af .af-head {
+    gap: 14px;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+}
+
+.af .af-eyebrow {
+    margin-bottom: 4px;
+    font-size: 10px;
+}
+
+.af .af-head h1 {
+    font-size: clamp(22px, 2.4vw, 28px);
+}
+
+.af .af-head p {
+    margin-top: 6px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.af .af-meta {
+    gap: 12px;
+}
+
+.af .af-step-label,
+.af .af-progress {
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.af .af-step-number {
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+}
+
+.af .af-step-label strong {
+    font-size: 13px;
+}
+
+.af .af-progress-top {
+    margin-bottom: 6px;
+    font-size: 12px;
+}
+
+.af .af-progress-top strong {
+    font-size: 13px;
+}
+
+.af .grow-track {
+    height: 6px;
+    margin-bottom: 6px;
+}
+
+.af .af-progress small {
+    font-size: 11px;
+}
+
+/* Sections */
+.af fieldset.af-section,
+.af section.af-section {
+    margin-bottom: 16px;
+    padding: 14px 16px 16px;
+    border-radius: 12px;
+}
+
+.af fieldset.af-section > legend {
+    font-size: 16px;
+}
+
+.af .af-section h2,
+.af .af-legend {
+    font-size: 17px;
+}
+
+.af .af-legend {
+    margin-bottom: 12px;
+}
+
+.af .af-section-heading {
+    margin-bottom: 10px;
+}
+
+/* Grid: farmer details use 3 columns, everything else 2 */
+.af .af-grid {
+    gap: 12px 16px;
+}
+
+.af fieldset.af-section:nth-of-type(1) .af-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* Fields */
+.af .field {
+    gap: 5px;
+}
+
+.af .field label,
+.af .field .af-label {
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.af .field input,
+.af .field select,
+.af .field textarea {
+    min-height: 42px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+
+.af .field select {
+    padding-right: 34px;
+    background-position: right 12px center;
+}
+
+.af .af-readonly {
+    min-height: 42px;
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 13.5px;
+}
+
+/* Farm insights */
+.af .af-insights {
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.af .af-insight {
+    gap: 2px;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+.af .af-insight > span {
+    font-size: 11px;
+}
+
+.af .af-insight > strong {
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Suggestion + warning */
+.af .af-suggest {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+}
+
+.af .af-suggest p {
+    font-size: 12.5px;
+    line-height: 1.5;
+}
+
+.af .af-warning {
+    margin-top: 10px;
+    padding: 9px 12px;
+    font-size: 12.5px;
+    line-height: 1.5;
+}
+
+/* Estimate */
+.af .af-estimate-icon {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+.af .af-estimate-grid {
+    gap: 8px;
+}
+
+.af .af-stat {
+    gap: 6px;
+    padding: 10px 12px;
+    border-radius: 10px;
+}
+
+.af .af-stat span {
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.af .af-stat strong {
+    font-size: clamp(13px, 1.4vw, 16px);
+}
+
+.af .af-muted {
+    margin-top: 10px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.af .af-note {
+    margin-top: 10px;
+    padding-top: 8px;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Review */
+.af .af-review-field {
+    padding: 9px 12px;
+    border-radius: 8px;
+}
+
+.af .af-review-field > span {
+    font-size: 11px;
+}
+
+.af .af-review-field > strong {
+    margin-top: 2px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+/* Buttons */
+.af .af-actions {
+    margin-top: 16px;
+}
+
+.af .af-button {
+    min-height: 42px;
+    padding: 9px 18px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.af .af-button-small {
+    min-height: 34px;
+    padding: 6px 14px;
+    font-size: 12px;
+}
+
+.af .af-error {
+    margin-top: 14px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    line-height: 1.5;
+}
+
+/* Compact breakpoints (must stay last so they win) */
+@media (max-width: 760px) {
+    .af {
+        padding: 14px 10px 24px;
+    }
+
+    .af .af-card {
+        padding: 18px;
+    }
+
+    .af fieldset.af-section:nth-of-type(1) .af-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 560px) {
+    .af {
+        padding: 8px 6px 20px;
+    }
+
+    .af .af-card {
+        padding: 14px 10px;
+        border-radius: 12px;
+    }
+
+    .af fieldset.af-section,
+    .af section.af-section {
+        margin-bottom: 12px;
+        padding: 12px 10px 14px;
+    }
+
+    .af .af-grid,
+    .af fieldset.af-section:nth-of-type(1) .af-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+    }
+
+    .af .af-head h1 {
+        font-size: 22px;
     }
 }

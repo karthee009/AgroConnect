@@ -10,6 +10,7 @@ import LoanList from "./pages/LoanList";
 import EditLoan from "./pages/EditLoan";
 import Dashboard from "./pages/Dashboard";
 import UserDashboard from "./pages/UserDashboard";
+import FarmTools from "./pages/FarmTools";
 
 
 
@@ -51,6 +52,7 @@ function AppContent() {
 
         {/*user dashboarduhhhh*/}
         <Route  path="/user-dashboard" element={<UserDashboard />}/>
+        <Route path="/farm-tools" element={<FarmTools />} />
       </Routes>
     </>
   );

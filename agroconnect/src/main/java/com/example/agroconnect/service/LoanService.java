@@ -4,6 +4,8 @@ import com.example.agroconnect.model.Farmer;
 import com.example.agroconnect.model.Loan;
 import com.example.agroconnect.repository.FarmerRepository;
 import com.example.agroconnect.repository.LoanRepository;
+import com.example.agroconnect.model.LoanStatusHistory;
+import com.example.agroconnect.repository.LoanStatusHistoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,9 +15,13 @@ public class LoanService {
 
     private final LoanRepository repo;
     private final FarmerRepository frepo;
-    public LoanService(LoanRepository repo, FarmerRepository frepo){
-        this.repo = repo;
-        this.frepo = frepo;
+    private final LoanStatusHistoryRepository historyRepository;
+    public LoanService(LoanRepository repo, FarmerRepository frepo, LoanStatusHistoryRepository historyRepository){
+        this.repo = repo; this.frepo = frepo; this.historyRepository = historyRepository;
+    }
+    private void recordStatus(Loan loan, String previous, String current, String note) {
+        LoanStatusHistory h = new LoanStatusHistory(); h.setLoan(loan); h.setPreviousStatus(previous);
+        h.setNewStatus(current); h.setChangedBy("SYSTEM/ADMIN"); h.setNote(note); historyRepository.save(h);
     }
 
     public List<Loan> findall(){
@@ -46,8 +52,10 @@ public class LoanService {
                         new RuntimeException("Farmer not found"));
 
         loan.setFarmer(farmer);
-
-        return repo.save(loan);
+        if (loan.getLoanStatus() == null || loan.getLoanStatus().isBlank()) loan.setLoanStatus("PENDING");
+        Loan saved = repo.save(loan);
+        recordStatus(saved, null, saved.getLoanStatus(), "Loan application created");
+        return saved;
     }
 
     public Loan updateLoan(Long loanid, Loan loan) {
@@ -77,9 +85,10 @@ public class LoanService {
                 .orElseThrow(() ->
                         new RuntimeException("Loan not found"));
 
+        String previous = existing.getLoanStatus();
         existing.setLoanStatus("APPROVED");
-
-        return repo.save(existing);
+        Loan saved = repo.save(existing); recordStatus(saved, previous, "APPROVED", "Loan approved by admin");
+        return saved;
     }
 
 
@@ -89,8 +98,9 @@ public class LoanService {
                 .orElseThrow(() ->
                         new RuntimeException("Loan not found"));
 
+        String previous = existing.getLoanStatus();
         existing.setLoanStatus("REJECTED");
-
-        return repo.save(existing);
+        Loan saved = repo.save(existing); recordStatus(saved, previous, "REJECTED", "Loan rejected by admin");
+        return saved;
     }
 }
